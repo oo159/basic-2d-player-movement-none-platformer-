@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <canvas id="gameCanvas"></canvas>
+    <script>
+        const game = document.getElementById("gameCanvas");
+        game.width = window.innerWidth;
+        game.height = window.innerHeight;
+        const dim2d = game.getContext("2d");
+        let plrX = window.innerWidth / 2;
+        let plrY = window.innerHeight / 2;
+        document.addEventListener('keydown', (event) => {
+            if (event.key == 'w'){
+                plrY-=7;
+            }
+            if (event.key == 's'){
+                plrY+=7;
+            }
+            if (event.key == 'd'){
+                plrX+=7;
+            }
+            if (event.key == 'a'){
+                plrX-=7;
+            }
+        });
+        setInterval(() => {
+            dim2d.beginPath();
+            dim2d.fillStyle = "green";
+            dim2d.fillRect(0, 0, window.innerWidth, window.innerHeight);
+            dim2d.closePath();
+            dim2d.beginPath();
+            dim2d.fillStyle = "red";
+            dim2d.fillRect(plrX, plrY, 50, 50);
+            dim2d.closePath();
+        }, 50);
+    </script>
+</body>
+</html>
